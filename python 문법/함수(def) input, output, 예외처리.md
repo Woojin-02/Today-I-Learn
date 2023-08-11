@@ -12,7 +12,7 @@ def hello_world(name, loud = 1) : # loud = 1 : 값이 전달되지 않을 경우
 ```
 
 ```python
-def hello_world(*num*) : # 입력 매개변수 앞에 *이 붙으면 갯수 제한 없이 값을 받음
+def hello_world(*num) : # 입력 매개변수 앞에 *이 붙으면 갯수 제한 없이 값을 받음
     내용
 ```
 
@@ -47,3 +47,17 @@ ra, rb = hello_world()
 ra, _ = hello_world()
 ```
     * 결과값 중하나만 필요하면 '_'를 사용해서 생략 가능
+
+### 2. 예외처리
+
+ * try - except
+  ```python
+def print_x(num) :
+    try :
+        return result
+    
+    except Exception as e:
+        print("오류가 발생하였습니다:", e)
+        
+divide(10, 0)
+```
