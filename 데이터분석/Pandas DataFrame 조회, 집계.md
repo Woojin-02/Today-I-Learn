@@ -20,7 +20,8 @@
         * 반드시 and, or 대신 연산자를 사용
     * data.loc[(data['tax'] < 20) & (data['dat'] == 'Mon')]
     * data.loc[(data['tax'] < 20) | (data['dat'] == 'Mon')]
-    </br>
+
+
     > isin(), between()
     >* isin([값1, 값2, ... , 값n]) : 여러개의 값 조회
     >   * data.loc[data['class'].isin(['1', '2']) </br>
@@ -64,12 +65,4 @@
     * 여러 함수로 한꺼번에 집계 : .agg
         * data.groupby('Age', as_index=False)['MonthIncome'].agg['mean', 'count', 'max']
         * as_index = False 로 설정해도 집계기준변수를 인덱스로 사용
-
-### 3.
-
-
-### 4.
-
-
-### 5.
 
