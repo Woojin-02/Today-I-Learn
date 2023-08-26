@@ -2,6 +2,13 @@
 # HTML
 HTML(Hyper Text Markup Language) : 웹 문서를 작성하는 마크업 단어
 
+```python
+import pandas as pd
+import requests
+import numpy as np
+from bs4 import BeautifulSoup
+```
+
 ### 1. HTML 구성 요소
 - Document : 한페이지를 나타내는 단위
 - Element : 하나의 레이아웃을 나타내는 단위 : 시작태그, 끝태그, 텍스트로 구성
