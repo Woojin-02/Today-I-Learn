@@ -85,4 +85,51 @@ from sklearn.metrics import confusion_matrix, classification_report
     * 트리가 분기해서 리프 노드를 만들려고 할 때, 만들어지는 리프 노드가 가지고 있는 샘플 수
     * 만약 기본값이 10이면, 부모 노드의 샘플 수가 10 이하면 자식(리프노드)의 샘플 수는 절대로 10을 넘을 수 없기 때문에 리프노드가 만들어지지 않음
 
-### 5. 시각화
+### 5. 변수 중요도
+* `model.feature_importances_`
+
+### 6. 시각화
+#### 1. graphviz로 시각화
+    * 관련 라이브러리를 따로 크롬이나 웨일 등에서 다운로드 및 설치해야함
+    * plot_tree보다 가독성 있는 시각화 가능
+
+```python
+# 시각화 모듈 불러오기
+from sklearn.tree import export_graphviz
+from IPython.display import Image
+
+# 이미지 파일 만들기
+export_graphviz(model,                                 # 모델 이름
+                out_file='tree.dot',                   # 파일 이름
+                feature_names=x.columns,               # Feature 이름 / list(x)도 같은 결과
+                class_names=['Woman', 'Man'],          # Target Class 이름 / 반드시 문자열을 입력
+                rounded=True,                          # 둥근 테두리
+                precision=2,                           # 불순도 소숫점 자리수
+                max_depth=3,                           # 3단계만 표시
+                filled=True)                           # 박스 내부 색깔 채우기. 진할수록 순도 높음
+
+# 파일 변환
+!dot tree.dot -Tpng -otree.png -Gdpi=300
+
+# 이미지 파일 저장
+Image(filename='tree.png')
+```
+
+* 주의 !class_names!
+    * 타겟 값(0, 1)이 아니라 그 클래스를 설명할 수 있는 단어(문자열)을 기입해야 함
+    * ***원래 데이터에서 알파벳 순으로 정렬되어 시각화, 라벨은 본인이 보고 싶은 이름을 부여***
+        * 그래프의 value 값은 알파벳 순으로 나옴
+        * value 값을 설명하기 위해 쓰는 class_names은 target의 value값이 어떤 것을 의미하는지 설명함
+        * 따라서 더 앞선 알파벳인 target의 value를 가리키는 라벨을 부여하고 싶으면, 앞에 해당 라벨을 붙여야함
+        * Sex target의 값인 0의 뜻이 female, 1의 뜻이 일 때 Woman, Man으로 class_names 표현하고 싶으면
+        * class_names = ['Woman', 'Man']이어야 함
+        * Sex target의 값이 female, male 두가지가 있고, Female, Male로 class_names를 추가하고 싶으면
+        * class_names = ['Femal', 'Male']
+            * target의 두 값 중 female이 먼저 나오기 때문에 데이터의 순서는 무조건 female, male로 고정됨
+            * 따라서 라벨링도 Famale, Male 순서로 입력
+
+#### 2. 변수 중요도 시각화
+* feature_importances_ 속성 값으로 변수 중요도 확인
+* 현재 생성된 Decision Tree 입장에서 변수의 중요도를 보여줌.
+    * 즉, 변수의 중요도를 보여주기 위해 Decision Tree를 사용할 필요는 없지만, Decision Tree를 사용했다면 feature_importances_를 확인해야함
+* 값이 클수록 Feature의 중요도가 높음
