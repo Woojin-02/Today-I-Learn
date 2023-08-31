@@ -28,3 +28,12 @@ from sklearn.metrics import confusion_matrix, classification_report
 * `y_pred = model.predict_proba(x_test)`
 * 결과 [[0.7, 0.3], [0.8, 0.2], [0.3, 0.7]]
     * 이 경우 첫번째는 0, 두번째는 0, 세번째는 1로 예측됨을 알 수 있다.
+
+### 5. 시각화
+* np.sort로 정렬 후 시각화
+* p는 `model.predict_proba`를 사용해서 도출한 x_test의 확률값
+```python
+plt.plot(np.sort(p[:,1]), color='tab:orange')
+plt.plot(np.sort(p[:,0]), color='tab:green') 
+plt.show()
+```
