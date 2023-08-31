@@ -16,6 +16,7 @@ from sklearn.metrics import confusion_matrix, classification_report
 
 1. K-Nearest Neighbor
 * 매우 간단함
+* k 수가 작아질수록 복잡해지고, k수가 커질수록 단순해짐(k값이 전체 데이터 개수가 되면 = 평균이기 때문에)
 * 테스트 데이터와 가장 가까운 이웃 k개의 값을 보고 예측값을 결정함
 * 학습용 데이터 학습
 * 학습한 데이터에서 k개의 최근접 이웃의 값을 찾아 새로운 값을 예측
