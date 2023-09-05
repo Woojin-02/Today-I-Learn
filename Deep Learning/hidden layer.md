@@ -23,3 +23,9 @@ Y = tf.keras.layers.Dense(1)(H)
 model = tf.keras.Model(X, Y)
 model.compile(loss='mse')
 ```
+
+### 1. 히든레이어의 개수
+* 학습이 잘 안됨 -> 차원을 늘려야 함
+* 학습이 너무 과함 -> 차원을 줄여야 함
+* 차원 : H = tf.keras.layers.Dense(**64**, activation='swish')(H)에서 숫자 '64' 부분
+* 보통 데이터가 많으면 128->64->32->... 으로 점점 차원을 줄이면서 학습한다.
