@@ -12,7 +12,7 @@
 ---
 
 * 원핫인코딩을 거치면 데이터의 종속변수가 2개 이상으로 증가한다.
-* 따라서, param도 (x의 개수 * y의 개수) + y의 개수가 된다.
+* 따라서, param도 `(x의 개수 +1) * y의 개수`가 된다.
     * param은 `model.summary()`로 확인 가능
     * 종속변수가 2개 이상이면, 
 ```python
@@ -22,7 +22,9 @@ model = tf.keras.Model(X, Y)
 model.compile(loss="categorical_crossentropy", metrics="accuracy") # loss 계산방식 변경, 사람이 이해하기 쉽도록 정확도(accuracy) 출력
 ```
 
-## 더미변수화(pd.get_dummies(drop_first=True)
+---
+
+**더미변수화(pd.get_dummies(drop_first=True)**
 * 키보드, 마우스, 스피커 3가지가 있을 때, 키보드는 [0, 0], 마우스는 [0, 1], 스피커는 [1, 0]으로 표현하는 방법
 
 ---
