@@ -30,5 +30,3 @@ model.compile(loss='binary_crossentropy',optimizer='adam')
 2. 신호들을 조합하고
 3. 일정 기준치를 넘는지 확인한 후에(활성화 함수 사용)
 4. 넘으면 output:1, 안넘으면 output:0
-
-### 4. 
