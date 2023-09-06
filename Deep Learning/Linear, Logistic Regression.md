@@ -30,3 +30,7 @@ model.compile(loss='binary_crossentropy',optimizer='adam')
 2. 신호들을 조합하고
 3. 일정 기준치를 넘는지 확인한 후에(활성화 함수 사용)
 4. 넘으면 output:1, 안넘으면 output:0
+* 예전에는 sigmoid를 사용했기 때문에 제대로 동작하지 않음. ReLU 함수를 쓰면서 퍼셉트론을 사용할 수 있게 됨
+
+### 4. 행렬곱
+* 행렬곱을 이용해서 hidden layer를 구성하거나 결과를 예측한다.
