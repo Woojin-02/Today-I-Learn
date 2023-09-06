@@ -36,8 +36,9 @@ model.summary()
 
 # 모델 학습
 # 수동으로 fit 실행(pyTorch에서는 이런 식으로 학습 실행)
-loss = tf.keras.losses.MeanSquaredError()
-optim = tf.keras.optimizers.Adam(learning_rate=0.001)  # learning_rate랑 워크북 파일의 dt값과 다름 / running rate는 다음 값을 정하는 nextW의 수식
+loss = tf.keras.losses.MeanSquaredError()    # 손실함수
+optim = tf.keras.optimizers.Adam(learning_rate=0.001)     # 최적화 함수
+# learning_rate랑 워크북 파일의 dt값과 다름 / running rate는 다음 값을 정하는 nextW의 수식
 
 for e in range(1000):       # 학습 횟수(epochs=1000)
     with tf.GradientTape() as tape :
