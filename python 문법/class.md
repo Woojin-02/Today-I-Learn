@@ -7,6 +7,7 @@
 * 클래스 선언(코드 작성) > 객체생성(메모리 사용) > 메서드 호출(코드 실행)
 * `클래스는 사용자정의 데이터타입이다.`
 * 클래스 식별자 컨벤션 : snake_case(X), PascalCase(O), UpperCamelCase(O)
+* **kwargs : 매개변수 여러개 입력받기. 임의의 숫자의 keyword argument.
 
 1. 예시 코드
 ```python
