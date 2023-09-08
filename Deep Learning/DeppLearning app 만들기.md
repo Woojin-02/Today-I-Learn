@@ -64,3 +64,56 @@ classifier(["오늘 시험 성적을 100점 받았어!", "오늘 엄마랑 싸�
 ### 2. Open AI
 * 모델을 다운로드 받을 수 없음
 * 모델을 이용해서 무언가를 만들 수는 있게 함
+
+1. 사용법
+라이브러리 설치 후
+```python
+!pip install openai
+```
+open AI 사이트(https://openai.com/) 접속 - 로그인 - API 선택 - playground - 원하는 모델 선택 - view code
+
+#### 1. GPT 모델 예시
+```python
+import gradio as gr
+import openai
+
+openai.api_key = ""  # open api key
+
+def 텍스트생성(prompt):
+    response = openai.Completion.create(
+        model="text-davinci-003",   # 모델 입력
+        prompt=prompt,
+        temperature=0.7, # 자유도 선택. 1에 가까울 수록 엉뚱하고 자유로운 대답이 나올 확률이 높아짐. 보통 0.7 선택
+        max_tokens=1024, # 최대 토큰(단어) 수
+    )
+    return response['choices'][0]['text'].strip()
+    # return prompt + response['choices'][0]['text'].strip()
+
+demo = gr.Interface(fn=텍스트생성, inputs="text", outputs="text")
+demo.launch(share=True)
+```
+
+#### 2. 프롬프트 엔지니어링
+* 프롬프트 = 생성형 AI 서비스와 소통할 때 필요함. 또한 AI를 작동시키기 위해 사용자가 언어 모델에 입력하는 모든 것이기도 함
+* 프롬프트 엔지니어링 = 인공지능 분야의 한 개념으로 AI로부터 높은 수준의 결과물을 얻기 위해 적절한 프롬프트를 구성하는 작업
+* 프롬프트 엔지니어링을 통해 주문을 도와주는 챗봇, 1대1 고객 센터 등 다양한 서비스를 만들 수 있음
+* 예시 코드
+```python
+# 프롬프트 엔지니어링
+import gradio as gr
+import openai
+
+openai.api_key = ""
+
+def 텍스트생성(prompt):
+    response = openai.Completion.create(
+        model="text-davinci-003",
+        prompt=f"'{prompt}'에 넣은 문장을 영어로 번역해줘.",  # 프롬프트
+        temperature=0.7,
+        max_tokens=1024,
+    )
+    return response['choices'][0]['text'].strip()
+
+demo = gr.Interface(fn=텍스트생성, inputs="text", outputs="text")
+demo.launch(share=True)
+```
