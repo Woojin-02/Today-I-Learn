@@ -22,6 +22,16 @@ class MyFashionMNISTModel(tf.keras.Model):
         self.dense3 = tf.keras.layers.Dense(10, activation="softmax")
         # self.compile()
 
+        # skip connection layers
+        self.skip_connection_layers = []
+        for i in range(16):
+            dropout = tf.keras.layers.Dropout(0.5)
+            dense = tf.keras.layers.Dense(64)
+            bn = tf.keras.layers.BatchNormalization()
+            activation = tf.keras.layers.Activation('swish')
+            skip = tf.keras.layers.Add()
+            self.skip_connection_layers.append([dropout, dense, bn, activation, skip])
+
     #  tf.keras.layers.Add()를 통해 skip connection을 하려는 경우 따로 반복문 함수를 만들어야 한다.
 
     def call(self, X):
@@ -31,6 +41,15 @@ class MyFashionMNISTModel(tf.keras.Model):
         H = self.dense2(H)
         H = self.bn2(H)
         Y = self.dense3(H)
+
+        # skip connection layers
+        for drop, dense, bn, activation, skip in self.skip_connection_layers:
+            H1 = drop(H)
+            H1 = dense(H1)
+            H1 = bn(H1)
+            H1 = activation(H1)
+            H = skip([H, H1])  # 이전 레이어의 출력과 현재 레이어의 출력을 더
+
         return Y
     # 한번 돌리면 가중치가 생기기 때문에 할때마다 새로운 bn, dense를 써야 한다. layer나 activation layer도 만든다고 하면 따로 만들어야 함
 
