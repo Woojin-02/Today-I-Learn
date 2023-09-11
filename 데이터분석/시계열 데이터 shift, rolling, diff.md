@@ -13,6 +13,7 @@
     * pd.to_datetime(data['Date'], format = '%d-%m-%Y')
 
 2. .dt.날짜요소
+
 | 메서드 |	내용 |
 | ---- | ---- |
 |"df['date'].dt.date" |	YYYY-MM-DD(문자) |
