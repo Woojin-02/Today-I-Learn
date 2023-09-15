@@ -1,7 +1,8 @@
 # Convolutional Neural Network
 
 * 이미지 데이터를 바로 Flatten을 사용해서 데이터의 형태를 바꾸면 위치 정보가 소실됨
-* 위치정보의 소실을 최대한 막으면서 이미지 데이터를 학습하도록 하는 것이 CNN(Convolutional Neural Network)
+* ***위치정보의 소실을 최대한 막으면서 이미지 데이터를 학습하도록 하는 것이 CNN(Convolutional Neural Network)***
+* ***원본 이미지(혹은 그로부터 생성된 Feature 맵)의 일부를 분석해서, 그 특징(위치정보가 포함된)으로 새로운 Feature map 생성***
 
 ### 1. Feature Map
 * 기존에 없던 특징들을 뽑아 그 특징들을 쌓아서 지도의 형태로 만든 것
@@ -91,7 +92,7 @@ train_y.shape
 * 원래대로 되돌리려면
 ```python
 np.argmax(test_y, axis=1)
-# 후에 실제 값과 비교할 때 사요앟ㅁ
+# 후에 실제 값과 비교할 때 사용함
 # 자세한 사항은 아랫줄 '평가 지표 및 실제 데이터 확인'을 참고(shift+f로 찾기)
 ```
 
