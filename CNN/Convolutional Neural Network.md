@@ -83,9 +83,16 @@ print(train_x.max(), train_x.min())
 * 만약 원핫인코딩을 하지 않는 경우에는, model을 compile 할 때 `sparse_categorical_crossentropy`를 사용한다.
 ```python
 from tensorflow.keras.utils import to_categorical
+
 class_n = len(np.unique(train_y))
+
 train_y = to_categorical(train_y, class_n)
 test_y = to_categorical(test_y, class_n)
+
+# 아래 코드도 가능
+train_x = train_x.reshape(train_x.shape[0], 28, 28, -1)
+test_x = test_x.reshape(test_x.shape[0], 28, 28, -1)
+
 train_y.shape
 ```
 * 원래대로 되돌리려면
@@ -152,9 +159,10 @@ model = Model(il, ol)
 
 * 모델 컴파일
 ```python
-model.compile(optimizer = 'adam',
-              loss='categorical_crossentropy',
-              metrics='accuracy')
+model.compile(optimizer = 'adam',                # 경사하강법의 세부 방법 설
+              loss='categorical_crossentropy',   # 내 모델의 예측값과 실제 정답을 무엇으로 비교할지 결정
+              metrics='accuracy'                 # 분류 문제의 모델 지표
+             )
 ```
 
 * EarlyStopping 설정
@@ -170,8 +178,8 @@ es = EarlyStopping(monitor='val_loss',       # 얼리스토핑 적용할 관측 
 * 모델 학습
 ```python
 hist = model.fit(train_x, train_y, epochs=1000, verbose=1,
-                 validation_split=0.2, # 학습 데이터로부터 validation set을 생성
-                 callbacks=[es]
+                 validation_split=0.2, # 학습 데이터로부터 validation set을 20% 생성
+                 callbacks=[es]        # 얼리스토핑 적용
                  )
 ```
 
