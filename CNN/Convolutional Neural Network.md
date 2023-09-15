@@ -9,6 +9,10 @@
     * W : 너비
     * C : 채널(Depth)
 * 하나의 Feature map에는 서로 다른, 기존에 없었던, 기존의 이미지를 보존한 채로 n개의 새로운 feature가 있음
+* Feature map size 구하는 공식
+
+![image](https://github.com/Woojin-02/Today-I-Learn/assets/64728336/cf3bd83e-9e4b-4813-a114-9d5f8b29ef6a)
+
 
 ### 2. Feature Map 생성 과정
 * 분석하고자 하는 이미지를 조각으로 만들어서 특징을 뽑아냄
