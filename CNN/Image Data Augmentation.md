@@ -27,3 +27,27 @@ imageGen = aug.flow(image, # 이미지 어레이를 받아서.
                     # save_format='jpg'     # jpg 양식으로 저장
                     ) 
 ```
+
+```python
+from tensorflow.keras.preprocessing.image import ImageDateGenerator
+
+# 학습용 데이터
+train_IDG = ImageDataGenerator(rescale=1./255,
+                               zca_whitening=True,
+                               rotation_range=10,
+                               zoom_range=0.1,
+                               width_shift_range=0.1,
+                               height_shift_range=0.1,
+                               horizontal_flip=True
+                               vertical_flip=True)
+train_IDG.fit(train_x)
+
+flow_train_IDG = trian_IDG.flow(train_x, train_y,
+                                batch_size=128,)
+
+# 검증용 데이터
+val_IDG = ImageDataGenerator(rescale=1./255)
+
+flow_val_IDG = val_IDG.flow(val_x, val_y,
+                            batch_size=128)
+```
