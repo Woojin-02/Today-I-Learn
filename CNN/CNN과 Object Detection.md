@@ -18,3 +18,9 @@
 * 이때 대회에 사용된 CNN 모델의 구조와 가중치는 `backbone`이라고 하고,
 * 우리 문제에 필요한 구조는 `head`라고 한다.
     * 최근에는 `neck`이라고, backbone과 head 사이를 좀 더 잘 연결되게 해주는 것도 추가되었다.
+
+```
+Image Net에서 잘 학습된 모델을 뼈대로 이용해서 자기들의 용도에 맞게 쓸 수 있도록 Transfer Learging한것
+```
+
+* 대표적으로 UltraLytics의 YOLO v8이 있다.
