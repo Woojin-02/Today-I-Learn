@@ -1,8 +1,9 @@
 # UltraLytics_YOLOv8
 
 * 다양한 사용방법이 있음
-* 여기서는 이 파일의 내용을 Roboflow에 적용해볼 것임
-* 링크
+* 여기서는 이 파일의 내용을 Roboflow에 적용해볼 것임(링크)
+* 현재 종류 : yolo8n.pt, yolo8n.pt,yolo8s.pt,yolo8m.pt,yolo8l.pt,yolo8x.pt.
+     * n이 가장 작은 단위이며 뒤로 갈수록 점점 단위가 커진다. 제일 큰 단위는 x
 
 ### 1. 설치 및 import
 ```python
