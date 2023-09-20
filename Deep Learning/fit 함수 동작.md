@@ -19,6 +19,36 @@ model.fit(독립, 종속, epochs=1000)
 model.predict(독립)
 ```
 
+### Early stopping
+* 무조건 Epoch 을 많이 돌린 후, 특정 시점에서 멈추는 것
+* 과적합 방지 등의 용도로 사용할 수 있음
+```python
+from tensorflow.keras.callbacks import EarlyStopping
+
+es = EarlyStopping(monitor='val_loss',     # 얼리스토핑을 적용할 관측 대상. val_loss는 검증 데이터(val data)의 loss를 비교해 과적합 여부를 확인한다
+                   min_delta=0,            # Threshold. 설정한 값보다 크게 변해야 성능 개선했다고 간주함
+                   patience=3,             # 성능 개선이 이뤄지지 않을 때 몇 번 더 지켜볼 것인가 인내심
+                   verbose=1,              # 어느 epoch에서 얼리 스토핑이 적용되었는지 보여줌
+                   restore_best_weights=True  # 가장 성능이 좋은 시점의 epoch 가중치로 돌려줌
+                   )
+
+model.fit(x_train, y_train,
+          epochs=100, verbose=1,
+          validation_split=0.2,
+          callbacks=[es]
+)
+```
+
+### validation_split, validation_data
+```python
+model.fit(x_train, y_train,
+          epochs=100, verbose=1,
+          # validation_split=0.2,      # 매 epoch마다 랜덤하게 20%를 validation 데이터로 사용
+          # validation_data='변수이름' # 따로 준비된 validation 데이터를 사용해서 검증
+          callbacks=[es]
+)
+```
+
 ### model.fit() 풀어쓰기
 ```python
 # fit 함수를 사용했을 때
