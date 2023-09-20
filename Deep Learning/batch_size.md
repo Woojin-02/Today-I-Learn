@@ -1,4 +1,4 @@
-# batch_size=
+# batch_size
 
 ```python
 model.fit(독립, 종속, epochs=500, batch_size=64)
