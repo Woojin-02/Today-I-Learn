@@ -2,6 +2,7 @@
 
 ### Object Detection이란?
 ![Alt text](image.png)
+* CNN의 세부 요소중 하나
 * Multi-Labeled Classification + Bounding Box Regression
     * Multi-Labeled Classification(다중 레이블 분류) : 각 샘플이 여러 개의 클래스에 속할 수 있는 분류 문제
     * Bounding Box Regression
