@@ -1,6 +1,6 @@
 # Convolutional Neural Network
 
-* 이미지 데이터를 바로 Flatten을 사용해서 데이터의 형태를 바꾸면 위치 정보가 소실됨
+* 이미지 데이터를 바로 Flatten을 사용해서 데이터의 형태를 바꾸면 위치 정보가 소실됨(이를 fully connected 방식이라고 부름)
 * ***위치정보의 소실을 최대한 막으면서 이미지 데이터를 학습하도록 하는 것이 CNN(Convolutional Neural Network)***
 * ***원본 이미지(혹은 그로부터 생성된 Feature 맵)의 일부를 분석해서, 그 특징(위치정보가 포함된)으로 새로운 Feature map 생성***
 
@@ -53,8 +53,42 @@
 * max pooling과 average pooling이 있다.
     * max pooling은 filter안에 있는 데이터를 뽑아낼 때 가장 큰 값을 뽑아낸다.
     * avg pooling은 filter 안에 있는 데이터들의 평균을 뽑아낸다.
+ 
+### 5. Conv2D
+* Convolutional layer 라이브러리
+* filters : 서로 다른 convalutional layer filter의 수, 새롭게 제작하려는 feature map의 수
+* kernel_size : 필터의 가로세로 사이즈
+* strides : 필터의 이동 보폭
+* padding : 1. 원본 사이즈(이전 feature map 사이즈 유지) 2. 외곽 정보 더 반영
+* activations : 활성화 함수, 항상 빼먹지 않도록 주의!
+```python
+# 라이브러리 설치
+from tensorflow.keras.layers import Conv2D
 
-### 5. CNN 순서
+# 예시
+hl = Conv2D(filters=128,    
+            kernel_size=(3, 3), 
+            strides=(1, 1),  
+            padding='same',  # 패딩을 하려면 same 입력, 패딩 적용 유무
+            activation='relu'
+            )(il)
+```
+
+### 6. MaxPool2D
+* Max Pooling 라이브러리
+* pool_size : pooling filter의 가로 세로 크기. 보통 (2, 2)가 일반적
+* strides : pool_size를 따라가는 것이 일반
+```python
+# 라이브러리 설치
+from tensorflow.keras.layers import MaxPool2D
+
+# 예시
+hl = MaxPool2D(pool_size=(2, 2), 
+               strides=(2, 2))
+              )(hl)
+```
+
+### 7. CNN 순서
 각자 차이가 있지만 흐름은 비슷함
 ```
 원본 이미지 -> CONV -> pool -> CONV -> pool -> Flatten -> FC -> FC -> 예측값
