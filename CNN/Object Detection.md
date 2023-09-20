@@ -3,6 +3,9 @@
 ### Object Detection이란?
 ![Alt text](image.png)
 * CNN의 세부 요소중 하나
+* Class Classification + Localization
+     * Localization에서 위치정보를 보존한 채로 특징을 추출하는 CNN이 필요함
+     * 즉, backbone과 head 중 backbone의 역할을 함(head는 CNN 모델과 가중치에 우리가 해결하려는 문제를 붙이는, 새로운 클래스를 의미함)
 * Multi-Labeled Classification + Bounding Box Regression
     * Multi-Labeled Classification(다중 레이블 분류) : 각 샘플이 여러 개의 클래스에 속할 수 있는 분류 문제
     * Bounding Box Regression
