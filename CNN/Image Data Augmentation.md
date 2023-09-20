@@ -52,3 +52,5 @@ val_IDG = ImageDataGenerator(rescale=1./255)
 flow_val_IDG = val_IDG.flow(val_x, val_y,
                             batch_size=128)
 ```
+
+* 클래스에 맞게 적절히 이미지가 분류되어 만들어진 폴더가 있다면 .flow_from_directory()를 사용할 수 있다.
