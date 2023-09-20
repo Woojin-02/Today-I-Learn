@@ -11,8 +11,8 @@ model = tf.keras.models.Model(X, Y)
 model.compile(loss='mse', optimizer='adam')
 ```
 
-### 2. 로지스틱 회귀와 크로스 엔트로피
-* 시그모이드로 fitting해서 그래프를 그리면 -> 로지스틱 회귀
+### 2. 로지스틱 회귀와 crossentropy
+* sigmoid(시그모이드)로 fitting해서 그래프를 그리면 -> 로지스틱 회귀
 * 수식을 정리하면 : 
     * y가 0일때는 로스를 -log(1-y.hat), 1일때는 로스를 -log(y.hat)을 사용한다는 의미
     * 값을 올바르게 예측하면(0을 0으로, 1을 1로) log값이 0이 되고, 반대로 값을 틀리게 예측하면(0을 1로, 1을 0으로 예측) log값이 무한으로 수렴한다.
