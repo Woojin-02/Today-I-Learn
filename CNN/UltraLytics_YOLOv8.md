@@ -1,9 +1,12 @@
 # UltraLytics_YOLOv8
 
 * 다양한 사용방법이 있음
-* 여기서는 이 파일의 내용을 Roboflow에 적용해볼 것임(링크)
+* 여기서는 이 파일의 내용을 Roboflow에 적용해볼 것임 [링크](https://github.com/Woojin-02/Today-I-Learn/blob/main/CNN/Roboflow%20UltraLytics.md)
 * 현재 종류 : yolo8n.pt, yolo8n.pt,yolo8s.pt,yolo8m.pt,yolo8l.pt,yolo8x.pt.
      * n이 가장 작은 단위이며 뒤로 갈수록 점점 단위가 커진다. 제일 큰 단위는 x
+* [Github 문서](https://github.com/ultralytics)
+* [공식 docs](https://docs.ultralytics.com/)
+      * 공식 문서와 실제 코드 실행이 다른 경우가 있으니 공식 문서를 맹신하지 말고 직접 해볼것!
 
 ### 1. 설치 및 import
 ```python
