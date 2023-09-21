@@ -1,5 +1,6 @@
 # UltraLytics_YOLOv8
 
+* 구글 코랩 기준
 * 다양한 사용방법이 있음
 * 여기서는 이 파일의 내용을 Roboflow에 적용해볼 것임 [링크](https://github.com/Woojin-02/Today-I-Learn/blob/main/CNN/Roboflow%20UltraLytics.md)
 * 현재 종류 : yolo8n.pt, yolo8n.pt,yolo8s.pt,yolo8m.pt,yolo8l.pt,yolo8x.pt.
