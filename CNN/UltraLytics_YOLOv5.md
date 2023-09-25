@@ -79,7 +79,7 @@ export COMET_API_KEY=<XwcbPRs4gEoS16pgeoufTLKyx>  # 2. paste API key
 
 ```python
 # 예
-!python '/content/yolov5/train.py' --img 640 --batch 8 --epochs 3 --data '/content/Dataset/money.yaml' --weights yolov5s.pt --project '/content/Dataset' -- names 'trained_detect' --exist-ok
+!python '/content/yolov5/train.py' --img 640 --batch 8 --epochs 3 --data '/content/Dataset/money.yaml' --weights yolov5s.pt --project '/content/Dataset' -- name 'trained_detect' --exist-ok
 ```
 
 ```
@@ -90,7 +90,22 @@ export COMET_API_KEY=<XwcbPRs4gEoS16pgeoufTLKyx>  # 2. paste API key
    * 다운로드받은 YOLOv5 파일에 있는 utils -> torch_utils.py 수정
    * 혹은 `--patience 숫자값`을 학습 코드에 추가해서 성능 개선이 발생하지 않을 때 몇 epoch 더 지켜볼 것인지 설정
    * [참고](https://github.com/ultralytics/yolov5/blob/master/utils/torch_utils.py)
+- comet 실행 결과를 사이트에서 보고 싶으면 실행창 제일 아래에 뜨는
+To upload this offline experiment, run:
+    comet upload /content/.cometml-runs/9e382ed7f4ab4504929608fccd742496.zip
+메세지 확인해서 실행
 ```
 
 **5. 모델 평가하기**
+* **source** : dectect를 실행하고자 하는 이미지 경로를 적어줌
+* conf : confidence score. 0.25이상일 때 바운딩 박스를 그리도록 설정
+* weights : weights 파일을 best.pt 가중치 파일을 사용
+* iou : Intersection over Union
+* project : 데이터가 저장될 상위경로
+* name : 데이터가 저장될 하위경로
+* line-thickness : 그려질 선의 두께
+* exist-ok : 데이터 갱신해서 저장(새로운 파일을 만들지 않음)
 
+```python
+!python '/content/yolov5/detect.py' --source 파일 경로 --weights '/content/Dataset/exp/weights/best.pt' --conf 0.25 --iou 0.75 --project '/content/Dataset' --name=run_image --line-thickness 2 --exist-ok
+```
