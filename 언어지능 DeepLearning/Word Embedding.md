@@ -1,0 +1,8 @@
+# Word Embedding
+
+* 고차원 저밀도 백터를 저차원 고밀도 벡터로 변환
+
+* encoding
+    * 아날로그를 디지털로 전환하는 것
+    * 현실세계에 존재하는 것들을 0과 1로 변환하는 규칙을 encoding, 이걸 역으로 해제하는 것을 decoding이라고 함
+    * Embedding을 사용해서 word to vector 진행
