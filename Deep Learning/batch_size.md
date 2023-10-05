@@ -25,6 +25,6 @@ model.fit(독립, 종속, epochs=500, batch_size=64)
 ![](https://blog.kakaocdn.net/dn/k24n4/btrCHb6e0hy/ZkQjGQE8axo8C1iSj8lhDK/img.png)
 
 ### 트레이닝을 할 때에는 배치를 나누는데 추론할 때에는 왜 안나눌까?
-```
+</br>
 학습에서는 가중치 변경이 일어나는데, 이 변경을 언제 하는지를 결정하는 것이 배치 사이즈. 추론에서는 가중치 변경이 일어나지 않기 때문에 배치를 나눌 필요가 없다.
-```
+
