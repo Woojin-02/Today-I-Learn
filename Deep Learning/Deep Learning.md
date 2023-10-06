@@ -15,8 +15,18 @@ import pandas as pd
 import tensorflow as tf
 ```
 
+### 딥러닝 과정
+**1. 딥러닝 모델 준비(Deep Learning Model Setup)**
+* 어떤 model, optimizer, loss등 사용할지 결정한다.
+
+**2. 학습(Training(with Large Scale Dataset))**
+* 준비된 데이터셋을 이용해 학습한다.
+
+**3. 추론, 예측(Inference / Testing)**
+* 학습된 모델을 이용해 추론한다.
+
 ### 딥러닝의 기본 양상
-1. 과거의 데이터를 준비한다.
+**1. 과거의 데이터를 준비한다.**
 ```python
 x_train = df[['feature']]
 y_train = df[['target']]
