@@ -45,8 +45,9 @@
     * zero padding으로 feature map의 크기를 유지했기 때문이다.
 
 ### 4. Pooling Layer
-* depth는 유지하고 가로 세로 사이즈만 줄일 때 사용한다
+* depth는 유지하고 가로 세로 사이즈만 줄일 때 사용한다.
     * 28 X 28 X 128 사이즈 feature map -> 14 X 14 X 128 사이즈 feature map
+* Convolutional을 진행하면서 데이터는 필연적으로 커지기 때문에, 사이즈를 줄여주는 작업이 필요함.-> Pooling
 * 데이터의 빠른 처리를 위해 예전에 사용했으나, 점점 사용하지 않는 추세.
 * filter size(예시 : (2, 2)), Stride(예시 (2, 2))를 설정한다.
     * Stride는 filter size와 동일하게 설정하는 것이 국룰
