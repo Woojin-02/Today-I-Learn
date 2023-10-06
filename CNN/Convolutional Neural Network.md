@@ -4,6 +4,34 @@
 * ***위치정보의 소실을 최대한 막으면서 이미지 데이터를 학습하도록 하는 것이 CNN(Convolutional Neural Network)***
 * ***원본 이미지(혹은 그로부터 생성된 Feature 맵)의 일부를 분석해서, 그 특징(위치정보가 포함된)으로 새로운 Feature map 생성***
 
+## 개념 정리
+
+```
+X   # 상수
+C1 = activation(W1 * X)  # C1 필터 적용
+P1 = pool(C1)
+C2 = activation(W2 * P1)  # C2 필터 적용
+P2 = pool(C2)
+X2 = flatten(P2)  # 한줄로 세워서 NN에 입력(W1, W2 포함)
+Y = softmax(X2)
+```
+
+```
+X: 상수일 때
+
+# CNN
+Y = softmax_({W,b}(flatten(pool(activation(W2* pool(activation(W1 * X))))))
+# pool(activation(W2* pool(activation(W1 * X)))) 이 부분에서 필터를 이용해서 데이터를 분류하기 쉽도록 특징을 추출(LDA와 비슷함/(자동차/트럭/배/비행기)라는 전체적인 특성을 몰빵해서 비슷한 위치에 위치하게 하는 필터를 이용)
+# CNN은 X까지 변수(f2(f1(x)) 이기 때문에 x를 고려해야 함. 여기서 X가 Convolution 결과를 의미함. 단, 이때의 변수 X는 트레이닝 단계의 변수이기 때문에 학습이 다 끝나면 상수로 변한다.
+# X 안에 있는 함수를 학습
+= 지금까지 나온 convolution filter들을 역으로 거슬러 올라가며 학습
+# softmax를 사용하기 전에 다차원 데이터의 특성이 사라지지 않도록 비선형 전처리기라는 filter 사용해서 특성을 보존
+
+# 기본 Softmax
+Y=softmax_(W, b)(X)
+# W, b만 고려해서 학습(softmax는 X는 상수이기 때문에 고려할 대상이 아님.)
+```
+
 ### 1. Feature Map
 * 기존에 없던 특징들을 뽑아 그 특징들을 쌓아서 지도의 형태로 만든 것
     * H : 높이
