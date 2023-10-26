@@ -36,7 +36,7 @@ from sklearn.model_selection import GridSearchCV
 params = {'max_depth':range(1, 31)}  # 30개 선언
 
 # 기본 모델 선언
-dt_model = ecisionTreeRegressor(random_state=1)
+dt_model = DecisionTreeRegressor(random_state=1)
 
 # Random Search 선언
   # cv=5
