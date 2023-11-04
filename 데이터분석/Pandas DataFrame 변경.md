@@ -8,7 +8,7 @@
         * data.columns = ['bill', 'tip', 'sex', 'day', 'time']
     * rename() 메소드
         * 지정한 열 이름 변경
-        * data.rename(columns ={ 'bill' : total_bill, 'sex': 'Gender'}, inplace=True)
+        * data.rename(columns ={ 'bill' : 'total_bill', 'sex': 'Gender'}, inplace=True)
 
 2. 열 추가
     * 맨 뒤에 열 추가
