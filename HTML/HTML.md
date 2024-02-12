@@ -25,7 +25,7 @@ HTML(Hyper Text Markup Language) : 웹 문서를 작성하는 마크업 단어
   - body
     - 화면을 구성하는 엘리먼트
 
-  ```
+```
 <!-- HTML 웹문서의 기본적인 구조 -->
 <!DOCTYPE html>
 <html lang="en">
