@@ -1,8 +1,11 @@
-# Convolutional Neural Network
+# 1. Convolutional Neural Network(CNN)
 
+
+* 합성곱 신경망
 * 이미지 데이터를 바로 Flatten을 사용해서 데이터의 형태를 바꾸면 위치 정보가 소실됨(이를 fully connected 방식이라고 부름)
 * ***위치정보의 소실을 최대한 막으면서 이미지 데이터를 학습하도록 하는 것이 CNN(Convolutional Neural Network)***
 * ***원본 이미지(혹은 그로부터 생성된 Feature 맵)의 일부를 분석해서, 그 특징(위치정보가 포함된)으로 새로운 Feature map 생성***
+
 
 ## 개념 정리
 
@@ -19,6 +22,8 @@ Y = softmax(X2)
 ```
 X: 상수일 때
 
+
+
 # CNN
 Y = softmax_({W,b}(flatten(pool(activation(W2* pool(activation(W1 * X))))))
 # pool(activation(W2* pool(activation(W1 * X)))) 이 부분에서 필터를 이용해서 데이터를 분류하기 쉽도록 특징을 추출(LDA와 비슷함/(자동차/트럭/배/비행기)라는 전체적인 특성을 몰빵해서 비슷한 위치에 위치하게 하는 필터를 이용)
@@ -32,6 +37,7 @@ Y=softmax_(W, b)(X)
 # W, b만 고려해서 학습(softmax는 X는 상수이기 때문에 고려할 대상이 아님.)
 ```
 
+
 ### 1. Feature Map
 * 기존에 없던 특징들을 뽑아 그 특징들을 쌓아서 지도의 형태로 만든 것
     * H : 높이
@@ -41,6 +47,8 @@ Y=softmax_(W, b)(X)
 * Feature map size 구하는 공식
 
 ![image](https://github.com/Woojin-02/Today-I-Learn/assets/64728336/cf3bd83e-9e4b-4813-a114-9d5f8b29ef6a)
+
+
 
 
 ### 2. Feature Map 생성 과정
@@ -58,6 +66,8 @@ Y=softmax_(W, b)(X)
     * 이를 통해 생성되는 Feature map의 크기를 유지할 수 있고,
     * 외곽 데이터의 정보를 더 많이 훑어보게 되므로 외곽 정보를 더 반영할 수 있음
 
+
+
 ### 3. 컬러 이미지에서의 CNN
 * 32 X 32 X 3 의 컬러 이미지가 있을 때,
     * 생성되는 Filter의 수는 사용자가 임의로 정한다
@@ -72,6 +82,8 @@ Y=softmax_(W, b)(X)
 * 만약 패딩을 했다면 32 X 32 X 32 라는 Feature map이 나와야 한다.
     * zero padding으로 feature map의 크기를 유지했기 때문이다.
 
+
+
 ### 4. Pooling Layer
 * depth는 유지하고 가로 세로 사이즈만 줄일 때 사용한다.
     * 28 X 28 X 128 사이즈 feature map -> 14 X 14 X 128 사이즈 feature map
@@ -82,6 +94,8 @@ Y=softmax_(W, b)(X)
 * max pooling과 average pooling이 있다.
     * max pooling은 filter안에 있는 데이터를 뽑아낼 때 가장 큰 값을 뽑아낸다.
     * avg pooling은 filter 안에 있는 데이터들의 평균을 뽑아낸다.
+
+
  
 ### 5. Conv2D
 * Convolutional layer 라이브러리
@@ -103,6 +117,8 @@ hl = Conv2D(filters=128,
             )(il)
 ```
 
+
+
 ### 6. MaxPool2D
 * Max Pooling 라이브러리
 * pool_size : pooling filter의 가로 세로 크기. 보통 (2, 2)가 일반적
@@ -117,11 +133,14 @@ hl = MaxPool2D(pool_size=(2, 2),
               )(hl)
 ```
 
+
+
 ### 7. CNN 순서
 각자 차이가 있지만 흐름은 비슷함
 ```
 원본 이미지 -> CONV -> pool -> CONV -> pool -> Flatten -> FC -> FC -> 예측값
 ```
+
 
 1. reshape
 * 데이터의 형태가 (60000, 28, 28)같이 채널이 없다면, (60000, 28, 28, 1)의 형태로 채널이 추가되어야 한다
@@ -132,6 +151,7 @@ train_x = train_x.reshape(train_x.shape[0], h, w, 1)
 test_x = test_x.reshape(test_x.shape[0], h, w, 1)
 print(train_x.shape, train_y.shape, test_x.shape, test_y.shape)
 ```
+
 
 2. 스케일 조정
 * 0 ~ 255 사이의 이미지값을 0~1로 스케일링 해야 한다.
@@ -145,6 +165,7 @@ test_x = (test_x  - min_n) / (max_n - min_n)
 
 print(train_x.max(), train_x.min())
 ```
+
 
 3. one-hot Encoding
 * 필요에 따라 y_test, y_train 값을 원핫 인코딩해야 한다.
@@ -169,6 +190,7 @@ np.argmax(test_y, axis=1)
 # 후에 실제 값과 비교할 때 사용함
 # 자세한 사항은 아랫줄 '평가 지표 및 실제 데이터 확인'을 참고(shift+f로 찾기)
 ```
+
 
 4. 모델링
 * 라이브러리
